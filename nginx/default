@@ -1,0 +1,14 @@
+server {
+     listen 80;
+     location / {
+        proxy_pass http://myapp/;
+        proxy_read_timeout 600;
+        proxy_buffering off;
+        proxy_set_header Connection keep-alive;
+  }
+ }
+
+upstream myapp {
+        server 127.0.0.1:6002;
+}
+
